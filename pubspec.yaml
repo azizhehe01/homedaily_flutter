@@ -1,0 +1,35 @@
+name: homedaily_flutter
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1
+
+
+flutter:
+
+  
+  uses-material-design: true
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/homedaily_icon.jpg"  
+  
+  adaptive_icon_foreground: "assets/icons/homedaily_icon.jpg"  # Ikon depan (wajib)
+  adaptive_icon_background: "#FFFFFF"  # Warna latar atau path ke gambar
