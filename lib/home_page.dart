@@ -1,3 +1,4 @@
+import 'detail_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -28,53 +29,67 @@ class HomePage extends StatelessWidget {
     },
   ];
 
-  // Widget to build a single product card
-  Widget _buildProductCard(Map<String, dynamic> product) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.network(
-              product['image'],
-              height: 120,
-              width: double.infinity,
-              fit: BoxFit.cover,
+  Widget _buildProductCard(BuildContext context, Map<String, dynamic> product) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetailPage(
+              product: {
+                'image': product['image'],
+                'title': product['title'],
+                'description': product['description'],
+              },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product['title'],
-                  style: GoogleFonts.roboto(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  product['description'],
-                  style: GoogleFonts.roboto(
-                    color: Colors.grey,
-                    fontSize: 12,
-                  ),
-                ),
-              ],
+        );
+      },
+      child: Card(
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+              child: Image.network(
+                product['image'],
+                height: 120,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product['title'],
+                    style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    product['description'],
+                    style: GoogleFonts.roboto(
+                      color: Colors.grey,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -187,7 +202,7 @@ class HomePage extends StatelessWidget {
                     Container(
                       width: 160,
                       margin: const EdgeInsets.only(right: 16),
-                      child: _buildProductCard(products[i]),
+                      child: _buildProductCard(context, products[i]),
                     ),
                 ],
               ),
@@ -204,7 +219,7 @@ class HomePage extends StatelessWidget {
                     Container(
                       width: 160,
                       margin: const EdgeInsets.only(right: 16),
-                      child: _buildProductCard(products[i]),
+                      child: _buildProductCard(context, products[i]),
                     ),
                 ],
               ),
