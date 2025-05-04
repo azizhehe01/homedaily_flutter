@@ -52,7 +52,7 @@ class CartPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Rp 2.000.000',
+                      'Rp 498,000',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 18,
@@ -175,7 +175,7 @@ class CartItemCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 const Text(
-                  'Rp 1.000.000',
+                  'Rp 249,000',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 14,
