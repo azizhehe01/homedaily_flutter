@@ -1,9 +1,11 @@
 import 'detail_product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'cart.dart';
+
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   // Product data list
   final List<Map<String, dynamic>> products = const [
@@ -257,6 +259,14 @@ class HomePage extends StatelessWidget {
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
+        onTap: (index) {
+          if (index == 2) { // Cart index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          }
+        }
       ),
     );
   }
