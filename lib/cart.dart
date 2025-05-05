@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
+import 'explore_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -52,7 +53,7 @@ class CartPage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Rp 498,000',
+                      'Rp 7.000.000',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 18,
@@ -124,8 +125,12 @@ class CartPage extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
+          }else if (index == 1) { // Explore index
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const ExplorePage()),
+            );
           }
-          // Add other navigation cases as needed
         },
       ),
     );
@@ -175,7 +180,7 @@ class CartItemCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 4),
                 const Text(
-                  'Rp 249,000',
+                  'Rp 3.500.000',
                   style: TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 14,
