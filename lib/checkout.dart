@@ -1,28 +1,36 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
-import 'checkout.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+class CheckoutPage extends StatelessWidget {
+  const CheckoutPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Shopping Cart',
+          'Checkout',
           style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        backgroundColor: Colors.orange,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          // Example cart item
-          CartItemCard(),
-          CartItemCard(),
+          const Text(
+            'Order Summary',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 16),
+          // Example order item
+          OrderItemCard(),
+          OrderItemCard(),
           const SizedBox(height: 20),
-          // Total section
+          // Payment details section
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -42,15 +50,59 @@ class CartPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'Total:',
+                      'Subtotal:',
                       style: TextStyle(
                         fontFamily: 'Poppins',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
                       'Rp 498,000',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Shipping:',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Rp 20,000',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                const Divider(height: 32, thickness: 1),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Total:',
+                      style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      'Rp 518,000',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 18,
@@ -72,15 +124,29 @@ class CartPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CheckoutPage(),
-                        ),
+                      // Aksi ketika tombol Place Order ditekan
+                      showDialog(
+                        context: context,
+                        builder:
+                            (context) => AlertDialog(
+                              title: const Text('Order Placed'),
+                              content: const Text(
+                                'Thank you for your purchase! Your order is now being processed.',
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                    Navigator.pop(context); // Kembali ke Cart
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            ),
                       );
                     },
                     child: const Text(
-                      'Checkout',
+                      'Place Order',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 16,
@@ -95,44 +161,11 @@ class CartPage extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            label: 'Wishlist',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: 2, // Set to 2 since Cart is the active page
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: true,
-        onTap: (index) {
-          if (index == 0) {
-            // Home index
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomePage()),
-            );
-          }
-          // Add other navigation cases as needed
-        },
-      ),
     );
   }
 }
 
-class CartItemCard extends StatelessWidget {
+class OrderItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -186,26 +219,13 @@ class CartItemCard extends StatelessWidget {
               ],
             ),
           ),
-          Row(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.remove_circle_outline),
-                onPressed: () {},
-                color: Colors.grey,
-              ),
-              const Text(
-                '1',
-                style: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              IconButton(
-                icon: const Icon(Icons.add_circle_outline),
-                onPressed: () {},
-                color: Colors.orange,
-              ),
-            ],
+          const Text(
+            'x1',
+            style: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ],
       ),
