@@ -1,6 +1,6 @@
-  import 'package:google_fonts/google_fonts.dart';
-  import 'package:flutter/material.dart';
-  import 'home_page.dart';  
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
+import 'home_page.dart';  
 
   void main() {
     runApp(const MyApp());
@@ -32,7 +32,7 @@
           children: [
             ClipPath(
               clipper: CurvedBottomClipper(),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: 300,
                 child: Stack(

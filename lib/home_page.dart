@@ -2,9 +2,11 @@ import 'detail_product_page.dart';
 import 'view_all_produk.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'cart.dart';
+import 'explore_page.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   // Product data list
   final List<Map<String, dynamic>> products = const [
@@ -13,24 +15,28 @@ class HomePage extends StatelessWidget {
           'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRhYmxlfGVufDB8fDB8fHww',
       'title': 'Meja',
       'description': 'bagus beut gilek',
+      'price': 'Rp 1.500.000',
     },
     {
       'image':
           'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c29mYXxlbnwwfHwwfHx8MA%3D%3D',
       'title': 'Sofa Nyaman',
-      'description': 'nyaman beut ni sova',
+      'description': 'nyaman beut ni sofa',
+      'price': 'Rp 3.500.000',
     },
     {
       'image':
           'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2hhaXJ8ZW58MHx8MHx8fDA%3D',
       'title': 'Kursi Elegan',
       'description': 'absolute masa depan',
+      'price': 'Rp 800.000',
     },
     {
       'image':
           'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFtcHxlbnwwfHwwfHx8MA%3D%3D',
       'title': 'Lampu Unik',
-      'description': 'lampu aneh ',
+      'description': 'lampu aneh',
+      'price': 'Rp 450.000',
     },
   ];
 
@@ -46,6 +52,7 @@ class HomePage extends StatelessWidget {
                     'image': product['image'],
                     'title': product['title'],
                     'description': product['description'],
+                    'price': product['price'], // Add this line
                   },
                 ),
           ),
@@ -268,6 +275,21 @@ class HomePage extends StatelessWidget {
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
+        onTap: (index) {
+          if (index == 1) {
+            // Explore index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ExplorePage()),
+            );
+          } else if (index == 2) {
+            // Cart index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          }
+        },
       ),
     );
   }
