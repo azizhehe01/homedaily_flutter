@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'chat_page.dart';
 
 class ProductDetailPage extends StatelessWidget {
   final Map<String, dynamic> product;
@@ -118,7 +119,14 @@ class ProductDetailPage extends StatelessWidget {
                       side: BorderSide(color: Colors.orange),
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ChatPage(product: product),
+                        )
+                      );
+                    },
                     child: Text(
                       'Ask Seller',
                       style: GoogleFonts.roboto(
