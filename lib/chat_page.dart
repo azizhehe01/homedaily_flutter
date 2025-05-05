@@ -10,7 +10,11 @@ class ChatPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Homdaily®', style: GoogleFonts.roboto(fontWeight: FontWeight.bold)),
+        title: Text(
+          'Homdaily®',
+          style: GoogleFonts.roboto(fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.orange,
       ),
       body: Column(
         children: [
@@ -47,7 +51,9 @@ class ChatPage extends StatelessWidget {
                     decoration: InputDecoration(
                       hintText: "Write a message",
                       border: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                      ),
                     ),
                   ),
                 ),
@@ -91,11 +97,16 @@ class ChatPage extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               product['title'],
-              style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color: Colors.white),
+              style: GoogleFonts.roboto(
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
             Text(
               'Rp.1000',
-              style: GoogleFonts.roboto(color: const Color.fromARGB(255, 247, 16, 0)),
+              style: GoogleFonts.roboto(
+                color: const Color.fromARGB(255, 247, 16, 0),
+              ),
             ),
           ],
         ),
@@ -131,10 +142,7 @@ class ChatPage extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               time,
-              style: GoogleFonts.roboto(
-                fontSize: 12,
-                color: Colors.grey[600],
-              ),
+              style: GoogleFonts.roboto(fontSize: 12, color: Colors.grey[600]),
             ),
           ],
         ),

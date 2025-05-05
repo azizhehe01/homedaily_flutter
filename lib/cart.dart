@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'explore_page.dart';
+import 'checkout.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -11,12 +12,10 @@ class CartPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Shopping Cart',
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        backgroundColor: Colors.orange,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -74,7 +73,14 @@ class CartPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CheckoutPage(),
+                        ),
+                      );
+                    },
                     child: const Text(
                       'Checkout',
                       style: TextStyle(
@@ -94,14 +100,8 @@ class CartPage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Explore',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
@@ -120,12 +120,14 @@ class CartPage extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         onTap: (index) {
-          if (index == 0) { // Home index
+          if (index == 0) {
+            // Home index
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
-          }else if (index == 1) { // Explore index
+          } else if (index == 1) {
+            // Explore index
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const ExplorePage()),

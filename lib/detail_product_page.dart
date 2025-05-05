@@ -13,17 +13,10 @@ class ProductDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Product Detail', style: GoogleFonts.roboto()),
         actions: [
-          IconButton(icon: const Icon(Icons.share),
-          onPressed: (){
-
-          },
-          ),
-          IconButton(icon: const Icon(Icons.favorite_border),
-          onPressed: () {
-            
-          },
-          ),
+          IconButton(icon: const Icon(Icons.share), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.favorite_border), onPressed: () {}),
         ],
+        backgroundColor: Colors.orange,
       ),
       body: Column(
         children: [
@@ -36,10 +29,7 @@ class ProductDetailPage extends StatelessWidget {
                     height: 300,
                     width: double.infinity,
                     color: Colors.grey[200],
-                    child: Image.network(
-                      product['image'],
-                      fit: BoxFit.cover,
-                    ),
+                    child: Image.network(product['image'], fit: BoxFit.cover),
                   ),
 
                   Padding(
@@ -57,24 +47,36 @@ class ProductDetailPage extends StatelessWidget {
                         const SizedBox(height: 16),
 
                         Text(
-                          'Type: furniture bagus bisa terbang', 
+                          'Type: furniture bagus bisa terbang',
                           style: GoogleFonts.roboto(color: Colors.grey[600]),
                         ),
                         const SizedBox(height: 8),
-                        
+
                         Row(
                           children: [
-                            Text('furniture gilek', style: GoogleFonts.roboto(fontWeight: FontWeight.bold)),
+                            Text(
+                              'furniture gilek',
+                              style: GoogleFonts.roboto(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             const SizedBox(width: 8),
-                            const Icon(Icons.verified, color: Colors.blue, size: 16),
+                            const Icon(
+                              Icons.verified,
+                              color: Colors.blue,
+                              size: 16,
+                            ),
                             const SizedBox(width: 4),
-                            Text('homedaily', style: GoogleFonts.roboto(color: Colors.blue)),
+                            Text(
+                              'homedaily',
+                              style: GoogleFonts.roboto(color: Colors.blue),
+                            ),
                           ],
                         ),
                         const SizedBox(height: 16),
 
                         Text(
-                          'Rp. 2,499.99', 
+                          'Rp. 2,499.99',
                           style: GoogleFonts.roboto(
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
@@ -92,7 +94,8 @@ class ProductDetailPage extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          product['description'] + ' pokok nya  baranng yang di jual di markettplace ini bagus gilek',
+                          product['description'] +
+                              ' pokok nya  baranng yang di jual di markettplace ini bagus gilek',
                           style: GoogleFonts.roboto(fontSize: 16, height: 1.5),
                         ),
                       ],
@@ -103,13 +106,11 @@ class ProductDetailPage extends StatelessWidget {
             ),
           ),
 
-
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
-              border: Border(top: BorderSide(color: Colors.grey[300]!),
-              ),
+              border: Border(top: BorderSide(color: Colors.grey[300]!)),
             ),
             child: Row(
               children: [
@@ -124,7 +125,7 @@ class ProductDetailPage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ChatPage(product: product),
-                        )
+                        ),
                       );
                     },
                     child: Text(
