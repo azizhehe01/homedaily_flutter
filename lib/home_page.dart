@@ -1,4 +1,5 @@
 import 'detail_product_page.dart';
+import 'view_all_produk.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,22 +9,26 @@ class HomePage extends StatelessWidget {
   // Product data list
   final List<Map<String, dynamic>> products = const [
     {
-      'image': 'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRhYmxlfGVufDB8fDB8fHww',
+      'image':
+          'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHRhYmxlfGVufDB8fDB8fHww',
       'title': 'Meja',
       'description': 'bagus beut gilek',
     },
     {
-      'image': 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c29mYXxlbnwwfHwwfHx8MA%3D%3D',
+      'image':
+          'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c29mYXxlbnwwfHwwfHx8MA%3D%3D',
       'title': 'Sofa Nyaman',
       'description': 'nyaman beut ni sova',
     },
     {
-      'image': 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2hhaXJ8ZW58MHx8MHx8fDA%3D',
+      'image':
+          'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2hhaXJ8ZW58MHx8MHx8fDA%3D',
       'title': 'Kursi Elegan',
       'description': 'absolute masa depan',
     },
     {
-      'image': 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFtcHxlbnwwfHwwfHx8MA%3D%3D',
+      'image':
+          'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFtcHxlbnwwfHwwfHx8MA%3D%3D',
       'title': 'Lampu Unik',
       'description': 'lampu aneh ',
     },
@@ -35,26 +40,27 @@ class HomePage extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductDetailPage(
-              product: {
-                'image': product['image'],
-                'title': product['title'],
-                'description': product['description'],
-              },
-            ),
+            builder:
+                (context) => ProductDetailPage(
+                  product: {
+                    'image': product['image'],
+                    'title': product['title'],
+                    'description': product['description'],
+                  },
+                ),
           ),
         );
       },
       child: Card(
         elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(12),
+              ),
               child: Image.network(
                 product['image'],
                 height: 120,
@@ -77,10 +83,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     product['description'],
-                    style: GoogleFonts.roboto(
-                      color: Colors.grey,
-                      fontSize: 12,
-                    ),
+                    style: GoogleFonts.roboto(color: Colors.grey, fontSize: 12),
                   ),
                 ],
               ),
@@ -90,11 +93,15 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Homdaily', style: GoogleFonts.roboto(fontWeight: FontWeight.bold)),
+        title: Text(
+          'HomeDaily',
+          style: GoogleFonts.roboto(fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -106,7 +113,9 @@ class HomePage extends StatelessWidget {
               width: double.infinity,
               decoration: BoxDecoration(
                 image: const DecorationImage(
-                  image: NetworkImage('https://media.istockphoto.com/id/2110826302/photo/living-room-with-cabinet-for-tv-on-dark-blue-color-wall-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=OJPbDbgXZzlMBsP3O4XNB7PF1VAOIsFOmEjxRPdgS54='),
+                  image: NetworkImage(
+                    'https://media.istockphoto.com/id/2110826302/photo/living-room-with-cabinet-for-tv-on-dark-blue-color-wall-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=OJPbDbgXZzlMBsP3O4XNB7PF1VAOIsFOmEjxRPdgS54=',
+                  ),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -151,7 +160,10 @@ class HomePage extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 12,
+                        ),
                       ),
                       onPressed: () {},
                       child: Text(
@@ -166,7 +178,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            
+
             // Popular Items Section
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -181,18 +193,23 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ViewAllProduk(),
+                        ),
+                      );
+                    },
                     child: Text(
                       'View all',
-                      style: GoogleFonts.roboto(
-                        color: Colors.grey,
-                      ),
+                      style: GoogleFonts.roboto(color: Colors.grey),
                     ),
                   ),
                 ],
               ),
             ),
-            
+
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -207,9 +224,9 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -224,7 +241,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             const SizedBox(height: 80),
           ],
         ),
@@ -232,14 +249,8 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Explore',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
