@@ -3,7 +3,6 @@ import 'home_page.dart';
 import 'explore_page.dart';
 import 'cart.dart';
 import 'profile_page.dart';
-import 'wishlist_page.dart';
 
 class WishlistPage extends StatelessWidget {
   const WishlistPage({super.key});
@@ -13,19 +12,15 @@ class WishlistPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Wishlist',
+          'My Wishlist',
           style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        backgroundColor: Colors.orange,
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
-        children: [
-          // Wishlist items
-          WishlistItemCard(),
-          WishlistItemCard(),
-          WishlistItemCard(),
-        ],
+        children: [WishlistItemCard(), WishlistItemCard(), WishlistItemCard()],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
@@ -51,32 +46,23 @@ class WishlistPage extends StatelessWidget {
         showUnselectedLabels: true,
         onTap: (index) {
           if (index == 0) {
-            //Home index
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
           } else if (index == 1) {
-            // Explore index
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const ExplorePage()),
             );
           } else if (index == 2) {
-            // Cart index
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const CartPage()),
             );
           } else if (index == 3) {
-            // Cart index
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const WishlistPage()),
-            );
-          } else if (index == 4) {
-            // Cart index
-            Navigator.push(
+            // Home index
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const ProfilePage()),
             );
@@ -141,29 +127,32 @@ class WishlistItemCard extends StatelessWidget {
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    OutlinedButton(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: Colors.orange),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                    SizedBox(
+                      width: 120,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange,
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                      ),
-                      child: const Text(
-                        'Add to Cart',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 12,
-                          color: Colors.orange,
+                        onPressed: () {},
+                        child: const Text(
+                          'Add to Cart',
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),
-                    const SizedBox(width: 8),
+                    const Spacer(),
                     IconButton(
-                      icon: const Icon(Icons.delete_outline),
+                      icon: const Icon(Icons.delete_outline, size: 24),
                       onPressed: () {},
-                      color: Colors.grey,
+                      color: Colors.grey[600],
                     ),
                   ],
                 ),

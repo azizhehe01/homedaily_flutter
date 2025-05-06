@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 import 'explore_page.dart';
 import 'checkout.dart';
+import 'profile_page.dart';
+import 'wishlist_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -131,6 +133,24 @@ class CartPage extends StatelessWidget {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const ExplorePage()),
+            );
+          } else if (index == 2) {
+            // Home index
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          } else if (index == 3) {
+            // Home index
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const WishlistPage()),
+            );
+          } else if (index == 4) {
+            // Home index
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const ProfilePage()),
             );
           }
         },
