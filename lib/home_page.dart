@@ -40,7 +40,16 @@ class HomePage extends StatelessWidget {
       'description': 'lampu aneh',
       'price': 'Rp 450.000',
     },
-  ];
+  ];//ini isi data di konten yang ini prodduk
+
+  final List<Map<String,dynamic>> service = const [
+    {
+      'image' : 'https://images.unsplash.com/photo-1711856168274-01d7f22fd847?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBzZXJ2aWNlfGVufDB8fDB8fHww',
+      'title' : 'service pipa',
+      'description' : 'pipa yang rusak bisa bener kalo pake ini',
+      'price' : 'Rp 5000',
+    },
+  ]; // yang ini isi konten tentang jasa
 
   Widget _buildProductCard(BuildContext context, Map<String, dynamic> product) {
     return GestureDetector(
@@ -188,7 +197,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-
+            // di atas ini batas code banner
             // Popular Items Section
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -218,7 +227,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
+            ),//ini untuk view all
 
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -253,7 +262,125 @@ class HomePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 80),
-          ],
+
+            Container(
+              height: 250,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: const DecorationImage(
+                  image: NetworkImage(
+                    'https://media.istockphoto.com/id/1457385092/photo/an-asian-young-technician-service-man-wearing-blue-uniform-checking-cleaning-air-conditioner.webp?a=1&b=1&s=612x612&w=0&k=20&c=kEAhA6blfC7fmtZCEWSFzca6UX8vx5MqBIKHvGFjD4g='
+                  ),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Container(
+                color: Colors.blue.withOpacity(0.4),
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'ABSOLUTE HOMESERVICE',
+                      style: GoogleFonts.roboto(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      '80% OFF',
+                      style: GoogleFonts.roboto(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 7),
+                    Text(
+                      'apalag yang lo tunggu \n untuk perawatan rumah tersayang',
+                      style: GoogleFonts.roboto(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 30,
+                          vertical: 12,
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'ORDER NOW',
+                        style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ), //ini container untuk banner yang kedua
+
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Produk populer ni ges',
+                    style: GoogleFonts.roboto(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ViewAllProduk(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      'View all',
+                      style: GoogleFonts.roboto(color: Colors.grey),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Row(
+                children: [
+                  for (int i = service.length - 1; i >= 0; i--)
+                    Container(
+                      width: 160,
+                      margin: const EdgeInsets.only(right: 16),
+                      child: _buildProductCard(context, service[i]),
+                    ),
+                ],
+              ),
+            ), //nah ini isi konten nya
+          ],//ini childern jadi isi content disini semua
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
