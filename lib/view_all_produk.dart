@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'detail_product_page.dart';
+import 'home_page.dart';
+import 'explore_page.dart';
+import 'cart.dart';
+import 'profile_page.dart';
 
 class ViewAllProduk extends StatelessWidget {
   ViewAllProduk({Key? key}) : super(key: key);
@@ -83,29 +87,73 @@ class ViewAllProduk extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return Container(
-          padding: const EdgeInsets.symmetric(vertical: 10),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.1),
+                spreadRadius: 1,
+                blurRadius: 5,
+              ),
+            ],
+          ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                leading: const Icon(Icons.share),
-                title: Text('Share', style: GoogleFonts.roboto()),
+                leading: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.share, color: Colors.orange),
+                ),
+                title: Text(
+                  'Share',
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                ),
                 onTap: () {
                   Navigator.pop(context);
                   // Add share functionality here
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.favorite_border),
-                title: Text('Add to Wishlist', style: GoogleFonts.roboto()),
+                leading: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(
+                    Icons.favorite_border,
+                    color: Colors.orange,
+                  ),
+                ),
+                title: Text(
+                  'Add to Wishlist',
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                ),
                 onTap: () {
                   Navigator.pop(context);
                   // Add wishlist functionality here
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.info_outline),
-                title: Text('Product Detail', style: GoogleFonts.roboto()),
+                leading: Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Icon(Icons.info_outline, color: Colors.orange),
+                ),
+                title: Text(
+                  'Product Detail',
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                ),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(
@@ -115,6 +163,26 @@ class ViewAllProduk extends StatelessWidget {
                     ),
                   );
                 },
+              ),
+              const SizedBox(height: 8),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.grey,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(color: Colors.grey.shade300),
+                    ),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    'Cancel',
+                    style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+                  ),
+                ),
               ),
             ],
           ),
@@ -339,11 +407,34 @@ class ViewAllProduk extends StatelessWidget {
             label: 'Profile',
           ),
         ],
-        currentIndex: 0,
-        selectedItemColor: Colors.orange[700],
+        currentIndex: 0, // Set to 3 since Wishlist is the active page
+        selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
-        elevation: 8,
+        onTap: (index) {
+          if (index == 0) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomePage()),
+            );
+          } else if (index == 1) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const ExplorePage()),
+            );
+          } else if (index == 2) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          } else if (index == 3) {
+            // Home index
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const ProfilePage()),
+            );
+          }
+        },
       ),
     );
   }
