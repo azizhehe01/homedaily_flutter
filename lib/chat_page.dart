@@ -12,7 +12,7 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Homdaily®',
-          style: GoogleFonts.roboto(fontWeight: FontWeight.bold),
+          style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         backgroundColor: Colors.orange,
       ),

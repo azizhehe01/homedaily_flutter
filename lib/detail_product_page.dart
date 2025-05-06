@@ -11,10 +11,10 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product Detail', style: GoogleFonts.roboto()),
+        title: Text('Product Detail', style: GoogleFonts.poppins(color: Colors.white, fontWeight: FontWeight.bold)),
         actions: [
-          IconButton(icon: const Icon(Icons.share), onPressed: () {}),
-          IconButton(icon: const Icon(Icons.favorite_border), onPressed: () {}),
+          IconButton(icon: const Icon(Icons.share), onPressed: () {}, color: Colors.white,),
+          IconButton(icon: const Icon(Icons.favorite_border), onPressed: () {}, color: Colors.white,),
         ],
         backgroundColor: Colors.orange,
       ),

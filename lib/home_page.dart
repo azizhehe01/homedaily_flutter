@@ -109,9 +109,10 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'HomeDaily',
-          style: GoogleFonts.roboto(fontWeight: FontWeight.bold),
+          style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
+        backgroundColor: Colors.orange,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -258,8 +259,14 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home), 
+            label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search), 
+            label: 'Explore'
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',

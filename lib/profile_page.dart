@@ -12,7 +12,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'My Wishlist',
+          'My profile',
           style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
