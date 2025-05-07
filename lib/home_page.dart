@@ -49,6 +49,26 @@ class HomePage extends StatelessWidget {
       'description' : 'pipa yang rusak bisa bener kalo pake ini',
       'price' : 'Rp 5000',
     },
+    {
+      'image' : 'https://plus.unsplash.com/premium_photo-1661758946219-dcf3e31e557d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
+      'title' : 'buatin kopi tiap pagi',
+      'description' : 'bangun tidut langsung ngopi seger nyooo',
+      'price' : 'Rp 500',
+    },
+    
+    {
+      'image' : 'https://plus.unsplash.com/premium_photo-1664301014580-9d9941d1fb51?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
+      'title' : 'lap meja',
+      'description' : 'meja langsung kinclong',
+      'price' : 'Rp 500',
+    },
+
+    {
+      'image' : 'https://images.unsplash.com/photo-1516788875874-c5912cae7b43?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
+      'title' : 'jasa bawa minuman',
+      'description' : 'di bawain minuman jadi ga cape',
+      'price' : 'Rp 500',
+    },
   ]; // yang ini isi konten tentang jasa
 
   Widget _buildProductCard(BuildContext context, Map<String, dynamic> product) {
@@ -108,7 +128,7 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ),//ini card untu product dan jasa 
     );
   }
 
