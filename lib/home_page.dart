@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
     },
     {
       'image' : 'https://plus.unsplash.com/premium_photo-1661758946219-dcf3e31e557d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
-      'title' : 'buatin kopi tiap pagi',
+      'title' : 'buatin kopi',
       'description' : 'bangun tidut langsung ngopi seger nyooo',
       'price' : 'Rp 500',
     },
@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
 
     {
       'image' : 'https://images.unsplash.com/photo-1516788875874-c5912cae7b43?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
-      'title' : 'jasa bawa minuman',
+      'title' : 'bawa minuman',
       'description' : 'di bawain minuman jadi ga cape',
       'price' : 'Rp 500',
     },
@@ -89,44 +89,52 @@ class HomePage extends StatelessWidget {
           ),
         );
       },
-      child: Card(
-        elevation: 2,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(12),
-              ),
-              child: Image.network(
-                product['image'],
-                height: 120,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    product['title'],
-                    style: GoogleFonts.roboto(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
+      child: AspectRatio(
+        aspectRatio: 0.75, // Ubah rasio sesuai kebutuhan (misal 1 untuk persegi)
+        child: Card(
+          elevation: 2,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 3, // Bagian gambar mengambil 3 bagian dari total
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.vertical(
+                    top: Radius.circular(12),
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    product['description'],
-                    style: GoogleFonts.roboto(color: Colors.grey, fontSize: 12),
+                  child: Image.network(
+                    product['image'],
+                    width: double.infinity,
+                    fit: BoxFit.cover,
                   ),
-                ],
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                flex: 2, // Bagian teks mengambil 2 bagian dari total
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product['title'],
+                        style: GoogleFonts.roboto(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        product['description'],
+                        style: GoogleFonts.roboto(color: Colors.grey, fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),//ini card untu product dan jasa 
     );
