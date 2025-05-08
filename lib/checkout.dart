@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CheckoutPage extends StatefulWidget {
-  const CheckoutPage({Key? key}) : super(key: key);
+  const CheckoutPage({super.key});
 
   @override
   _CheckoutPageState createState() => _CheckoutPageState();
@@ -330,7 +330,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             (context) => AlertDialog(
                               title: const Text('Order Placed'),
                               content: Text(
-                                'Thank you for your purchase! Your order will be processed with ${_selectedPaymentMethod} and shipped to ${_selectedAddress}.',
+                                'Thank you for your purchase! Your order will be processed with $_selectedPaymentMethod and shipped to $_selectedAddress.',
                               ),
                               actions: [
                                 TextButton(
@@ -365,7 +365,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 }
 
 class OrderItemCard extends StatelessWidget {
-  const OrderItemCard({Key? key}) : super(key: key);
+  const OrderItemCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -435,7 +435,7 @@ class OrderItemCard extends StatelessWidget {
 }
 
 class AddAddressPage extends StatefulWidget {
-  const AddAddressPage({Key? key}) : super(key: key);
+  const AddAddressPage({super.key});
 
   @override
   _AddAddressPageState createState() => _AddAddressPageState();

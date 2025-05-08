@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class ChatPage extends StatelessWidget {
   final Map<String, dynamic> product;
 
-  const ChatPage({Key? key, required this.product}) : super(key: key);
+  const ChatPage({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {

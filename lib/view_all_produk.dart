@@ -7,7 +7,7 @@ import 'cart.dart';
 import 'profile_page.dart';
 
 class ViewAllProduk extends StatelessWidget {
-  ViewAllProduk({Key? key}) : super(key: key);
+  ViewAllProduk({super.key});
 
   final List<Map<String, dynamic>> produkList = [
     {
