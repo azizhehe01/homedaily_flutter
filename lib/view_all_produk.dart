@@ -5,6 +5,8 @@ import 'home_page.dart';
 import 'explore_page.dart';
 import 'cart.dart';
 import 'profile_page.dart';
+import 'wishlist_page.dart';
+import 'transaction.dart';
 
 class ViewAllProduk extends StatelessWidget {
   ViewAllProduk({super.key});
@@ -413,23 +415,38 @@ class ViewAllProduk extends StatelessWidget {
         showUnselectedLabels: true,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pushReplacement(
+            // Home index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
           } else if (index == 1) {
-            Navigator.pushReplacement(
+            // Explore index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ExplorePage()),
             );
           } else if (index == 2) {
-            Navigator.pushReplacement(
+            // Cart index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TransactionPage()),
+            );
+          } else if (index == 3) {
+            // Cart index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const CartPage()),
             );
-          } else if (index == 3) {
-            // Home index
-            Navigator.pushReplacement(
+          } else if (index == 4) {
+            // Cart index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WishlistPage()),
+            );
+          } else if (index == 5) {
+            // Cart index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ProfilePage()),
             );

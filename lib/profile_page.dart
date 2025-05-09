@@ -1,11 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:homedaily_flutter/address.dart';
 import 'home_page.dart';
 import 'explore_page.dart';
 import 'cart.dart';
 import 'wishlist_page.dart';
+import 'checkout.dart';
+import 'transaction.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  // State untuk menyimpan data alamat
+  Map<String, String> addressData = {
+    'Street': 'Jl. Merdeka No. 123',
+    'City': 'Jakarta Selatan',
+    'Province': 'DKI Jakarta',
+    'Detail Address': 'Apartemen Green Garden, Tower A, Lantai 10, No. 1001',
+  };
+
+  // Fungsi untuk navigasi ke AddressManagementPage
+  void _navigateToAddressManagement() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddressManagementPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +37,11 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'My Profile',
-          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.orange,
@@ -75,6 +103,31 @@ class ProfilePage extends StatelessWidget {
             const SizedBox(height: 30),
 
             // Address Section
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Address',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextButton(
+                  onPressed: _navigateToAddressManagement,
+                  child: const Text(
+                    'Detail',
+                    style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontSize: 14,
+                      color: Colors.orange,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 5),
             Container(
               width: double.infinity,
               padding: const EdgeInsets.all(16),
@@ -92,44 +145,21 @@ class ProfilePage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Address',
-                        style: TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Icon(Icons.edit, color: Colors.orange),
-                    ],
+                  Text(
+                    addressData['Street']!,
+                    style: const TextStyle(fontFamily: 'Poppins', fontSize: 16),
                   ),
-                  const SizedBox(height: 15),
-                  _buildAddressItem(
-                    icon: Icons.home,
-                    title: 'Street',
-                    value: 'Jl. Merdeka No. 123',
+                  Text(
+                    addressData['City']!,
+                    style: const TextStyle(fontFamily: 'Poppins', fontSize: 16),
                   ),
-                  const Divider(height: 30, thickness: 1),
-                  _buildAddressItem(
-                    icon: Icons.location_city,
-                    title: 'City',
-                    value: 'Jakarta Selatan',
+                  Text(
+                    addressData['Province']!,
+                    style: const TextStyle(fontFamily: 'Poppins', fontSize: 16),
                   ),
-                  const Divider(height: 30, thickness: 1),
-                  _buildAddressItem(
-                    icon: Icons.map,
-                    title: 'Province',
-                    value: 'DKI Jakarta',
-                  ),
-                  const Divider(height: 30, thickness: 1),
-                  _buildAddressItem(
-                    icon: Icons.description,
-                    title: 'Detail Address',
-                    value:
-                        'Apartemen Green Garden, Tower A, Lantai 10, No. 1001',
+                  Text(
+                    addressData['Detail Address']!,
+                    style: const TextStyle(fontFamily: 'Poppins', fontSize: 16),
                   ),
                 ],
               ),
@@ -163,11 +193,15 @@ class ProfilePage extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
           BottomNavigationBarItem(
+            icon: Icon(Icons.receipt_long),
+            label: 'Transaksi',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.favorite_border),
             label: 'Wishlist',
           ),
           BottomNavigationBarItem(
@@ -175,79 +209,39 @@ class ProfilePage extends StatelessWidget {
             label: 'Profile',
           ),
         ],
-        currentIndex: 4,
+        currentIndex: 5,
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pushReplacement(
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
           } else if (index == 1) {
-            Navigator.pushReplacement(
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ExplorePage()),
             );
           } else if (index == 2) {
-            Navigator.pushReplacement(
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TransactionPage()),
+            );
+          } else if (index == 3) {
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const CartPage()),
             );
-          } else if (index == 3) {
-            Navigator.pushReplacement(
+          } else if (index == 4) {
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const WishlistPage()),
             );
           }
         },
       ),
-    );
-  }
-
-  Widget _buildAddressItem({
-    required IconData icon,
-    required String title,
-    required String value,
-  }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            color: Colors.orange.withOpacity(0.1),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(icon, color: Colors.orange, size: 20),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 12,
-                  color: Colors.grey,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                value,
-                style: const TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 

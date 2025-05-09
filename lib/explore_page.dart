@@ -4,6 +4,7 @@ import 'cart.dart';
 import 'detail_product_page.dart';
 import 'profile_page.dart';
 import 'wishlist_page.dart';
+import 'transaction.dart';
 
 class ExplorePage extends StatefulWidget {
   const ExplorePage({super.key});
@@ -445,6 +446,10 @@ class _ExplorePageState extends State<ExplorePage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
           BottomNavigationBarItem(
+            icon: Icon(Icons.receipt_long),
+            label: 'Transaksi',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
           ),
@@ -464,30 +469,41 @@ class _ExplorePageState extends State<ExplorePage> {
         onTap: (index) {
           if (index == 0) {
             // Home index
-            Navigator.pushReplacement(
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
+          } else if (index == 1) {
+            // Explore index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ExplorePage()),
+            );
           } else if (index == 2) {
-            // Home index
-            Navigator.pushReplacement(
+            // Cart index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TransactionPage()),
+            );
+          } else if (index == 3) {
+            // Cart index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const CartPage()),
             );
-          } else if (index == 3) {
-            // Home index
-            Navigator.pushReplacement(
+          } else if (index == 4) {
+            // Cart index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const WishlistPage()),
             );
-          } else if (index == 4) {
-            // Home index
-            Navigator.pushReplacement(
+          } else if (index == 5) {
+            // Cart index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ProfilePage()),
             );
           }
-          // Add other navigation cases as needed
         },
       ),
     );

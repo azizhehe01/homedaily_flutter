@@ -28,7 +28,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
       appBar: AppBar(
         title: const Text(
           'Checkout',
-          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.orange,

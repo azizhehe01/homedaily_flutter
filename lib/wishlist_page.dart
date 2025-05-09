@@ -4,6 +4,7 @@ import 'explore_page.dart';
 import 'cart.dart';
 import 'profile_page.dart';
 import 'detail_product_page.dart';
+import 'transaction.dart';
 
 class WishlistPage extends StatefulWidget {
   const WishlistPage({super.key});
@@ -84,7 +85,11 @@ class _WishlistPageState extends State<WishlistPage> {
       appBar: AppBar(
         title: const Text(
           'My Wishlist',
-          style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.orange,
@@ -153,11 +158,15 @@ class _WishlistPageState extends State<WishlistPage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
           BottomNavigationBarItem(
+            icon: Icon(Icons.receipt_long),
+            label: 'Transaksi',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
             label: 'Cart',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.favorite_border),
             label: 'Wishlist',
           ),
           BottomNavigationBarItem(
@@ -165,28 +174,44 @@ class _WishlistPageState extends State<WishlistPage> {
             label: 'Profile',
           ),
         ],
-        currentIndex: 3,
+        currentIndex: 4,
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
         onTap: (index) {
           if (index == 0) {
-            Navigator.pushReplacement(
+            // Home index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const HomePage()),
             );
           } else if (index == 1) {
-            Navigator.pushReplacement(
+            // Explore index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ExplorePage()),
             );
           } else if (index == 2) {
-            Navigator.pushReplacement(
+            // Cart index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TransactionPage()),
+            );
+          } else if (index == 3) {
+            // Cart index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const CartPage()),
             );
           } else if (index == 4) {
-            Navigator.pushReplacement(
+            // Cart index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WishlistPage()),
+            );
+          } else if (index == 5) {
+            // Cart index
+            Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const ProfilePage()),
             );

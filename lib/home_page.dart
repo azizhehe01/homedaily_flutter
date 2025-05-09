@@ -6,6 +6,7 @@ import 'cart.dart';
 import 'explore_page.dart';
 import 'wishlist_page.dart';
 import 'profile_page.dart';
+import 'transaction.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -40,34 +41,38 @@ class HomePage extends StatelessWidget {
       'description': 'lampu aneh',
       'price': 'Rp 450.000',
     },
-  ];//ini isi data di konten yang ini prodduk
+  ]; //ini isi data di konten yang ini prodduk
 
-  final List<Map<String,dynamic>> service = const [
+  final List<Map<String, dynamic>> service = const [
     {
-      'image' : 'https://images.unsplash.com/photo-1711856168274-01d7f22fd847?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBzZXJ2aWNlfGVufDB8fDB8fHww',
-      'title' : 'service pipa',
-      'description' : 'pipa yang rusak bisa bener kalo pake ini',
-      'price' : 'Rp 5000',
+      'image':
+          'https://images.unsplash.com/photo-1711856168274-01d7f22fd847?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvbWUlMjBzZXJ2aWNlfGVufDB8fDB8fHww',
+      'title': 'service pipa',
+      'description': 'pipa yang rusak bisa bener kalo pake ini',
+      'price': 'Rp 5000',
     },
     {
-      'image' : 'https://plus.unsplash.com/premium_photo-1661758946219-dcf3e31e557d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
-      'title' : 'buatin kopi',
-      'description' : 'bangun tidut langsung ngopi seger nyooo',
-      'price' : 'Rp 500',
-    },
-    
-    {
-      'image' : 'https://plus.unsplash.com/premium_photo-1664301014580-9d9941d1fb51?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
-      'title' : 'lap meja',
-      'description' : 'meja langsung kinclong',
-      'price' : 'Rp 500',
+      'image':
+          'https://plus.unsplash.com/premium_photo-1661758946219-dcf3e31e557d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
+      'title': 'buatin kopi',
+      'description': 'bangun tidut langsung ngopi seger nyooo',
+      'price': 'Rp 500',
     },
 
     {
-      'image' : 'https://images.unsplash.com/photo-1516788875874-c5912cae7b43?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
-      'title' : 'bawa minuman',
-      'description' : 'di bawain minuman jadi ga cape',
-      'price' : 'Rp 500',
+      'image':
+          'https://plus.unsplash.com/premium_photo-1664301014580-9d9941d1fb51?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
+      'title': 'lap meja',
+      'description': 'meja langsung kinclong',
+      'price': 'Rp 500',
+    },
+
+    {
+      'image':
+          'https://images.unsplash.com/photo-1516788875874-c5912cae7b43?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjR8fHNlcnZpY2V8ZW58MHx8MHx8fDA%3D',
+      'title': 'bawa minuman',
+      'description': 'di bawain minuman jadi ga cape',
+      'price': 'Rp 500',
     },
   ]; // yang ini isi konten tentang jasa
 
@@ -90,10 +95,13 @@ class HomePage extends StatelessWidget {
         );
       },
       child: AspectRatio(
-        aspectRatio: 0.75, // Ubah rasio sesuai kebutuhan (misal 1 untuk persegi)
+        aspectRatio:
+            0.75, // Ubah rasio sesuai kebutuhan (misal 1 untuk persegi)
         child: Card(
           elevation: 2,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -127,7 +135,10 @@ class HomePage extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         product['description'],
-                        style: GoogleFonts.roboto(color: Colors.grey, fontSize: 12),
+                        style: GoogleFonts.roboto(
+                          color: Colors.grey,
+                          fontSize: 12,
+                        ),
                       ),
                     ],
                   ),
@@ -136,7 +147,7 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-      ),//ini card untu product dan jasa 
+      ), //ini card untu product dan jasa
     );
   }
 
@@ -146,7 +157,10 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'HomeDaily',
-          style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color: Colors.white),
+          style: GoogleFonts.roboto(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.orange,
@@ -255,7 +269,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),//ini untuk view all
+            ), //ini untuk view all
 
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -297,7 +311,7 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 image: const DecorationImage(
                   image: NetworkImage(
-                    'https://media.istockphoto.com/id/1457385092/photo/an-asian-young-technician-service-man-wearing-blue-uniform-checking-cleaning-air-conditioner.webp?a=1&b=1&s=612x612&w=0&k=20&c=kEAhA6blfC7fmtZCEWSFzca6UX8vx5MqBIKHvGFjD4g='
+                    'https://media.istockphoto.com/id/1457385092/photo/an-asian-young-technician-service-man-wearing-blue-uniform-checking-cleaning-air-conditioner.webp?a=1&b=1&s=612x612&w=0&k=20&c=kEAhA6blfC7fmtZCEWSFzca6UX8vx5MqBIKHvGFjD4g=',
                   ),
                   fit: BoxFit.cover,
                 ),
@@ -408,19 +422,17 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ), //nah ini isi konten nya
-          ],//ini childern jadi isi content disini semua
+          ], //ini childern jadi isi content disini semua
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Explore'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home), 
-            label: 'Home'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search), 
-            label: 'Explore'
+            icon: Icon(Icons.receipt_long),
+            label: 'Transaksi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
@@ -450,15 +462,21 @@ class HomePage extends StatelessWidget {
             // Cart index
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const CartPage()),
+              MaterialPageRoute(builder: (context) => const TransactionPage()),
             );
           } else if (index == 3) {
             // Cart index
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const WishlistPage()),
+              MaterialPageRoute(builder: (context) => const CartPage()),
             );
           } else if (index == 4) {
+            // Cart index
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const WishlistPage()),
+            );
+          } else if (index == 5) {
             // Cart index
             Navigator.push(
               context,
