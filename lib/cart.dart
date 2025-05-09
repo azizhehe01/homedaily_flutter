@@ -10,12 +10,51 @@ class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
   @override
-  State<CartPage> createState() => CartPageState();
+  State<CartPage> createState() => _CartPageState();
 }
 
-class CartPageState extends State<CartPage> {
+class _CartPageState extends State<CartPage> {
+  String selectedFilter = 'Produk'; // Default filter
+
+  // Example cart items for products
+  final List<Map<String, dynamic>> productCartItems = [
+    {
+      'image': 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc',
+      'title': 'Sofa Nyaman',
+      'price': 'Rp 3.500.000',
+      'quantity': 1,
+    },
+    {
+      'image': 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7',
+      'title': 'Lampu Gantung',
+      'price': 'Rp 299.000',
+      'quantity': 2,
+    },
+  ];
+
+  // Example cart items for services
+  final List<Map<String, dynamic>> serviceCartItems = [
+    {
+      'image': 'https://images.unsplash.com/photo-1711856168274-01d7f22fd847',
+      'title': 'Service Pipa',
+      'price': 'Rp 5.000',
+      'quantity': 1,
+    },
+    {
+      'image':
+          'https://plus.unsplash.com/premium_photo-1661758946219-dcf3e31e557d',
+      'title': 'Buatin Kopi',
+      'price': 'Rp 500',
+      'quantity': 1,
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
+    final currentItems =
+        selectedFilter == 'Produk' ? productCartItems : serviceCartItems;
+    final total = selectedFilter == 'Produk' ? 'Rp 3.799.000' : 'Rp 5.500';
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -23,7 +62,7 @@ class CartPageState extends State<CartPage> {
           style: TextStyle(
             fontFamily: 'Poppins',
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         centerTitle: true,
@@ -31,21 +70,94 @@ class CartPageState extends State<CartPage> {
       ),
       body: Column(
         children: [
-          // Example cart item
-          CartItemCard(
-            image: 'https://example.com/image.jpg',
-            title: 'Product 1',
-            price: '\$10.00',
-            quantity: 1,
+          // Filter Container
+          Container(
+            padding: const EdgeInsets.all(16),
+            color: Colors.white,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 48,
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    decoration: BoxDecoration(
+                      color: Colors.orange,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.orange.withOpacity(0.2),
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: selectedFilter,
+                        isExpanded: true,
+                        icon: Container(
+                          padding: const EdgeInsets.all(4),
+                          decoration: BoxDecoration(
+                            color: Colors.orange.shade600,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: const Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                            color: Colors.white,
+                            size: 20,
+                          ),
+                        ),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
+                        dropdownColor: Colors.orange.shade400,
+                        borderRadius: BorderRadius.circular(12),
+                        items:
+                            <String>['Produk', 'Jasa'].map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedFilter = newValue!;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          CartItemCard(
-            image: 'https://example.com/image.jpg',
-            title: 'Product 2',
-            price: '\$20.00',
-            quantity: 2,
+          // Cart Items List
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: currentItems.length,
+              itemBuilder: (context, index) {
+                final item = currentItems[index];
+                return CartItemCard(
+                  image: item['image'],
+                  title: item['title'],
+                  price: item['price'],
+                  quantity: item['quantity'],
+                );
+              },
+            ),
           ),
-          const SizedBox(height: 20),
-          // Total section
+          // Total Section
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -72,7 +184,7 @@ class CartPageState extends State<CartPage> {
                       ),
                     ),
                     Text(
-                      'Total:',
+                      total,
                       style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 18,
@@ -139,7 +251,7 @@ class CartPageState extends State<CartPage> {
             label: 'Profile',
           ),
         ],
-        currentIndex: 3, // Set to 2 since Cart is the active page
+        currentIndex: 2, // Set to 2 since Cart is the active page
         selectedItemColor: Colors.orange,
         unselectedItemColor: Colors.grey,
         showUnselectedLabels: true,
