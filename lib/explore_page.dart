@@ -126,7 +126,7 @@ class _ExplorePageState extends State<ExplorePage> {
             fontFamily: 'Poppins',
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
           ),
         ),
         backgroundColor: Colors.orange,

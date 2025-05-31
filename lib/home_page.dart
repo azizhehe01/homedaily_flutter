@@ -7,6 +7,7 @@ import 'explore_page.dart';
 import 'wishlist_page.dart';
 import 'profile_page.dart';
 import 'transaction.dart';
+import 'chat_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -164,6 +165,23 @@ class HomePage extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: Colors.orange,
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.chat_bubble_outline,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatListPage(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(width: 8), // Add some padding
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

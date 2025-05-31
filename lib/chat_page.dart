@@ -1,151 +1,163 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'chat_page_detail.dart';
 
-class ChatPage extends StatelessWidget {
-  final Map<String, dynamic> product;
+class ChatListPage extends StatelessWidget {
+  final List<Map<String, dynamic>> sellers = [
+    {
+      'name': 'Absolute Furniture',
+      'image': 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800',
+      'lastMessage': 'Sofa masih ready kak',
+      'time': '10:30',
+      'unread': 2,
+      'product': {
+        'title': 'Sofa Nyaman',
+        'image': 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800',
+        'price': 'Rp 1.499.000'
+      }
+    },
+    {
+      'name': 'Lighting Store',
+      'image': 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800',
+      'lastMessage': 'Lampu gantungnya ready stock',
+      'time': '09:15',
+      'unread': 0,
+      'product': {
+        'title': 'Lampu Gantung',
+        'image': 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800',
+        'price': 'Rp 299.000'
+      }
+    },
+    {
+      'name': 'Wooden Craft',
+      'image': 'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=800',
+      'lastMessage': 'Meja kayunya bisa custom',
+      'time': 'Yesterday',
+      'unread': 1,
+      'product': {
+        'title': 'Meja Kayu',
+        'image': 'https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=800',
+        'price': 'Rp 2.199.000'
+      }
+    },
+  ];
 
-  const ChatPage({super.key, required this.product});
+  ChatListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Homdaily®',
-          style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color: Colors.white),
+        title: const Text(
+          'Chats',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: Colors.orange,
+        centerTitle: true,
+        elevation: 0,
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
+      body: ListView.builder(
+        itemCount: sellers.length,
+        itemBuilder: (context, index) {
+          final seller = sellers[index];
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ChatPage(product: seller['product']),
+                ),
+              );
+            },
+            child: Container(
               padding: const EdgeInsets.all(16),
-              children: [
-                _buildProductMessage(context),
-                _buildMessageBubble(
-                  context: context,
-                  isMe: true,
-                  text: "Ini produknya ya?",
-                  time: "00:49",
-                ),
-                _buildMessageBubble(
-                  context: context,
-                  isMe: false,
-                  text: "Iya, produk ${product['title']} harga Rp.1000",
-                  time: "01:52",
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.grey[100],
-              border: Border(top: BorderSide(color: Colors.grey[300]!)),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Write a message",
-                      border: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                      ),
-                    ),
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey.shade200,
+                    width: 1,
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.send, color: Colors.orange),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildProductMessage(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerRight,
-      child: Container(
-        constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width * 0.75,
-        ),
-        padding: const EdgeInsets.all(8),
-        margin: const EdgeInsets.only(bottom: 8),
-        decoration: BoxDecoration(
-          color: Colors.orange,
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.network(
-                product['image'],
-                height: 150,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              ),
+              child: Row(
+                children: [
+                  // Seller Image
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(seller['image']),
+                  ),
+                  const SizedBox(width: 16),
+                  // Seller Info
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              seller['name'],
+                              style: const TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                            Text(
+                              seller['time'],
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 12,
+                                color: Colors.grey[500],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                seller['lastMessage'],
+                                style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 14,
+                                  color: Colors.grey[600],
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            if (seller['unread'] > 0)
+                              Container(
+                                margin: const EdgeInsets.only(left: 8),
+                                padding: const EdgeInsets.all(6),
+                                decoration: const BoxDecoration(
+                                  color: Colors.orange,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Text(
+                                  seller['unread'].toString(),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 8),
-            Text(
-              product['title'],
-              style: GoogleFonts.roboto(
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              'Rp.1000',
-              style: GoogleFonts.roboto(
-                color: const Color.fromARGB(255, 247, 16, 0),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMessageBubble({
-    required BuildContext context,
-    required bool isMe,
-    required String text,
-    required String time,
-  }) {
-    return Align(
-      alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
-        constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width * 0.75,
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        margin: const EdgeInsets.symmetric(vertical: 4),
-        decoration: BoxDecoration(
-          color: isMe ? Colors.orange : Colors.grey[200],
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              text,
-              style: GoogleFonts.roboto(fontSize: 16, color: Colors.black),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              time,
-              style: GoogleFonts.roboto(fontSize: 12, color: Colors.grey[600]),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
